@@ -1,0 +1,7 @@
+# server
+server/dist/
+# frontend
+build/
+
+# node modules
+**node_modules/
