@@ -19,6 +19,8 @@ client
     })
     .then(result => console.log("CLIENT RESULT >>>>>>>> " + result));
 
+console.log(process.env.PUBLIC_URL)
+
 ReactDOM.render(
     <ApolloProvider client={client}>
         <App />
