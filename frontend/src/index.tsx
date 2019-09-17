@@ -3,28 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { ApolloProvider } from '@apollo/react-hooks';
-import client from './client';
-import gql from 'graphql-tag';
 
-client
-    .query({
-        query: gql`
-      {
-        rates(currency: "USD") {
-          currency
-        }
-      }
-    `
-    })
-    .then(result => console.log("CLIENT RESULT >>>>>>>> " + result));
-
-console.log(process.env.PUBLIC_URL)
 
 ReactDOM.render(
-    <ApolloProvider client={client}>
         <App />
-    </ApolloProvider>
     , document.getElementById('root')
 );
 
