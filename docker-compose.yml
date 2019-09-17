@@ -18,20 +18,20 @@ services:
       - ./server/src:/app/pokedex-microapp-server/src
       - ./server/dist:/app/pokedex-microapp-server/dist
 
-    ####
-    # Server Container
-    ####
-    frontend:
-      build: ./frontend
-      environment: 
-        - REACT_APP_PORT=${REACT_APP_PORT}
-      expose:
-        - ${REACT_APP_PORT}
-      ports: 
-        ${REACT_APP_PORT}:${REACT_APP_PORT}
-      volumes:
-        - ./frontend/src:/app/pokedex-microapp-frontend/src
-        - ./frontend/public:/app/pokedex-microapp-frontend/public
-      links:
-        - server
-      command: npm run start
+  ####
+  # Frontend Container
+  ####
+  frontend:
+    build: ./frontend
+    environment: 
+      - REACT_APP_PORT=${REACT_APP_PORT}
+    expose:
+      - ${REACT_APP_PORT}
+    ports: 
+      - ${REACT_APP_PORT}:${REACT_APP_PORT}
+    volumes:
+      - ./frontend/src:/app/pokedex-microapp-frontend/src
+      - ./frontend/public:/app/pokedex-microapp-frontend/public
+    links:
+      - server
+    command: npm run start
