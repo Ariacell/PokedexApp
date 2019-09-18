@@ -1,5 +1,5 @@
 import React, { Props } from "react";
-import {render, fireEvent, waitForElement } from "@testing-library/react";
+import {render, fireEvent, waitForElement, RenderResult, cleanup } from "@testing-library/react";
 
 import Counter from "./Counter";
 import { ICounterProps } from "./models";
@@ -20,18 +20,24 @@ function renderCounter(props: Partial<ICounterProps> = {}) {
 
 describe("Counter component ", () => {
 
-    let counterValue: any;
+    let helpers: RenderResult;
 
     beforeEach(() => {
-        const {getByTestId} = renderCounter(mockProps);
-        counterValue = getByTestId('counter-value');
-    })    
+        helpers = renderCounter(mockProps); 
+    })
 
     it('should display', () => {
         renderCounter(mockProps);
     });
 
-    it('should start at 0', () => {
+    it('should display 0 at page load', () => {
+        const counterValue = helpers.getByTestId('counter-value');
         expect(counterValue).toHaveTextContent('0');
     })
+
+    it('should display an increment and decrement button', () => {
+        expect
+    })
+
+    afterEach(cleanup)
 });
