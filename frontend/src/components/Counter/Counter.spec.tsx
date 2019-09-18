@@ -33,11 +33,14 @@ describe("Counter component ", () => {
     it('should display 0 at page load', () => {
         const counterValue = helpers.getByTestId('counter-value');
         expect(counterValue).toHaveTextContent('0');
-    })
+    });
 
     it('should display an increment and decrement button', () => {
-        expect
-    })
+        const incrementButtonEl = helpers.getByTestId('counter-increment');
+        expect(incrementButtonEl).toHaveTextContent('More');
+        const decrementButtonEl = helpers.getByTestId('counter-decrement');
+        expect(decrementButtonEl).toHaveTextContent('Less');
+    });
 
     afterEach(cleanup)
 });
