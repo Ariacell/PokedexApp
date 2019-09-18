@@ -5,8 +5,8 @@ interface ICounterProps {
 
 const Counter: React.FC<ICounterProps> = (props) => {
     return (
-      <div>
-        
+      <div data-testid="counter-value">
+        0
       </div>
     );
 }

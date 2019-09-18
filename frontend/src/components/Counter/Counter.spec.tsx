@@ -17,15 +17,21 @@ function renderCounter(props: Partial<ICounterProps> = {}) {
     return render(<Counter {...defaultProps}/>)
 }
 
+
 describe("Counter component ", () => {
+
+    let counterValue: any;
+
+    beforeEach(() => {
+        const {getByTestId} = renderCounter(mockProps);
+        counterValue = getByTestId('counter-value');
+    })    
+
     it('should display', () => {
         renderCounter(mockProps);
     });
 
     it('should start at 0', () => {
-        const { getByTestId } = renderCounter(mockProps);
-        const valueField = getByTestId('counter-value');
-        expect(valueField).toHaveTextContent('0');
-
+        expect(counterValue).toHaveTextContent('0');
     })
 });
