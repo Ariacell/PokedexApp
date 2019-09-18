@@ -5,16 +5,17 @@ import Counter from "./Counter";
 import { ICounterProps } from "./models";
 
 
-const mockProps: ICounterProps = {
+const mockIncrement = jest.fn();
+const mockDecrement = jest.fn();
 
+const mockProps: ICounterProps = {
+    onIncrement: mockIncrement,
+    onDecrement: mockDecrement
 }
 
 //Props deprecated? need to figure out how to do this override with typescript correctly.
 function renderCounter(props: Partial<ICounterProps> = {}) {
-    const defaultProps: ICounterProps = {
-
-    }
-    return render(<Counter {...defaultProps}/>)
+    return render(<Counter {...mockProps}/>)
 }
 
 
@@ -42,5 +43,15 @@ describe("Counter component ", () => {
         expect(decrementButtonEl).toHaveTextContent('Less');
     });
 
+    it('should call the increment and decrement callbacks when the respective buttons are clicked', () => {
+        const incrementButtonEl = helpers.getByTestId('counter-increment');
+        fireEvent.click(incrementButtonEl);
+        expect(mockIncrement).toHaveBeenCalled();
+        const decrementButtonEl = helpers.getByTestId('counter-decrement');
+        expect(decrementButtonEl).toHaveTextContent('Less');
+    });
+
+
+    
     afterEach(cleanup)
 });

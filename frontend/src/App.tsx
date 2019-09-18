@@ -4,6 +4,7 @@ import './App.css';
 import PokemonQuery from './components/PokemonQueryContainer/PokemonQuery';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { client } from './client';
+import Counter from './components/Counter/Counter';
 
 const App: React.FC = () => {
 
@@ -26,6 +27,7 @@ const App: React.FC = () => {
   return (<ApolloProvider client={client}>
 
     <div className="App">
+      <Counter/>
       <PokemonQuery />
       {/* <ClassPokemonQuery></ClassPokemonQuery> */}
       <header className="App-header">
