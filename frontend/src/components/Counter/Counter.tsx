@@ -1,7 +1,6 @@
 import * as React from 'react';
+import { ICounterProps } from './models';
 
-interface ICounterProps {
-}
 
 const Counter: React.FC<ICounterProps> = (props) => {
     return (
@@ -9,8 +8,8 @@ const Counter: React.FC<ICounterProps> = (props) => {
             <div data-testid="counter-value">
                 0
       </div>
-            <button data-testid="counter-increment">More</button>
-            <button data-testid="counter-decrement">Less</button>
+            <button data-testid="counter-increment" onClick={props.onIncrement}>More</button>
+            <button data-testid="counter-decrement" onClick={props.onDecrement}>Less</button>
         </>
     );
 }

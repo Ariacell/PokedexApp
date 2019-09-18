@@ -1,4 +1,4 @@
-export type ICounterProps = {
+export interface ICounterProps {
     onIncrement: () => void,
     onDecrement: () => void
 }

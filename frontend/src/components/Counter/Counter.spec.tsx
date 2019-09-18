@@ -48,7 +48,8 @@ describe("Counter component ", () => {
         fireEvent.click(incrementButtonEl);
         expect(mockIncrement).toHaveBeenCalled();
         const decrementButtonEl = helpers.getByTestId('counter-decrement');
-        expect(decrementButtonEl).toHaveTextContent('Less');
+        fireEvent.click(decrementButtonEl);
+        expect(mockDecrement).toHaveBeenCalled();
     });
 
 
